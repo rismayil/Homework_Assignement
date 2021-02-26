@@ -41,5 +41,6 @@ public class BaseTests {
         Assert.assertTrue(selectedOptions1.contains("Used Cars"), "Used Car is not selected");
 
     }
+    //Comment
 
 }
