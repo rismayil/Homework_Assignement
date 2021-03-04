@@ -55,7 +55,7 @@ public class LandingPage extends BasePage {
 		zipCode.sendKeys("60008");
 		JavascriptExecutor jse = (JavascriptExecutor)driver;
 		jse.executeScript("document.querySelector(\"input[value='Search']\")");
-		//document.querySelector("input[value='Search']")
+		
 		searchButton.click();
 		
 		return PageFactory.initElements(driver, SearchResultPage.class);
