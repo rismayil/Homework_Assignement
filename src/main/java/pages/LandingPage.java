@@ -39,6 +39,12 @@ public class LandingPage extends BasePage {
 	@FindBy(css="._1f8Iv ._17xN4")
 	public WebElement closeAd;
 	
+	@FindBy(xpath="//a[@title='login or signup']")
+	public WebElement signUpLink;
+	
+	@FindBy(xpath="//*[@id='header']//a[contains(text(),'Shop')] ")
+	public WebElement shopButton;
+	
 	
 	
 	public SearchResultPage searchUsedCars() {
@@ -49,16 +55,20 @@ public class LandingPage extends BasePage {
 		BrowserUtils.selectDropdown(allMakes, "Honda");
 		BrowserUtils.selectDropdown(allModels, "Pilot");
 		BrowserUtils.selectDropdown(price, "$50,000");
-//		if(closeAd.isDisplayed())
-//			closeAd.click();
+		if(closeAd.isDisplayed())
+			closeAd.click();
 		BrowserUtils.selectDropdown(distance, "100 Miles from");
+		zipCode.clear();
 		zipCode.sendKeys("60008");
-		JavascriptExecutor jse = (JavascriptExecutor)driver;
-		jse.executeScript("document.querySelector(\"input[value='Search']\")");
-		
+//		JavascriptExecutor jse = (JavascriptExecutor)driver;
+//		jse.executeScript("document.querySelector(\"input[value='Search']\")");
+//		
 		searchButton.click();
 		
-		return PageFactory.initElements(driver, SearchResultPage.class);
+		
+		
+		//return PageFactory.initElements(driver, SearchResultPage.class);
+		return new SearchResultPage(driver);
 	}
 	
 	

@@ -16,8 +16,42 @@ public class SearchResultPage extends BasePage {
 	@FindBy(css=".header-primary__title-row .srp-header")
 	public WebElement searchHeader;
 	
-	public void verifySearchHeader(String expectedHeader) {
+	@FindBy(xpath="//header[@class='filter-header']//label[contains(text(),'Maximum Price: $50,000')]")
+	public WebElement maxPriceFilter;
+	
+	@FindBy(xpath="//header[@class='filter-header']//label[contains(text(),'Honda')]")
+	public WebElement makeFilter;
+	
+	@FindBy(xpath="//header[@class='filter-header']//label[contains(text(),'Pilot')]")
+	public WebElement modelFilter;
+	
+	@FindBy(xpath="//header[@class='filter-header']//label[contains(text(),'Used')]")
+	public WebElement usedFilter;
+	
+	@FindBy(xpath="//label[normalize-space()='New']")
+	public WebElement newRadioButton;
+	
+	@FindBy(xpath="//label[normalize-space()='Used']")
+	public WebElement usedRadioButton;
+	
+	@FindBy(xpath="//header[@class='filter-header']//label[contains(text(),'New')]")
+	public WebElement newFilter;
+	
+	
+	
+	public void verifyFiltersDisplayed() {
 		//Assert.assertEquals(searchHeader, expectedHeader);
+		Assert.assertTrue(maxPriceFilter.isDisplayed());
+		Assert.assertTrue(makeFilter.isDisplayed());
+		Assert.assertTrue(modelFilter.isDisplayed());
+		Assert.assertTrue(usedFilter.isDisplayed());
 	}
+	
+	public void verifyNewFilterDisplayedUsedFilterNotDisplayed() {
+		newRadioButton.click();
+		Assert.assertTrue(newFilter.isDisplayed());
+		Assert.assertFalse(usedFilter.isDisplayed());
+	}
+	
 
 }

@@ -8,7 +8,7 @@ import base.BaseTest;
 import pages.LandingPage;
 import pages.SearchResultPage;
 
-public class Test1 extends BaseTest {
+public class VerifySearchResults extends BaseTest {
 	
 	WebDriver driver;
 	
@@ -17,13 +17,20 @@ public class Test1 extends BaseTest {
 	//BasePage basePage = new BasePage(driver);
 	
 	@Test
-	public void searchCars() {
+	public void verifyFiltersDisplayed() {
 		
 		BasePage basePage = new BasePage(driver);
-		basePage.invokeBrowser("Mozila");
+		basePage.invokeBrowser("chrome");
 		landingPage = basePage.OpenApplication();
 		searchResultsPage=landingPage.searchUsedCars();
-		((SearchResultPage) searchResultsPage).verifySearchHeader("Used Honda Pilot for Sale");
+		//((SearchResultPage) searchResultsPage).verifySearchHeader("Used Honda Pilot for Sale");
+		searchResultsPage.verifyFiltersDisplayed();
+		
+	}
+	
+	@Test
+	public void verifyNewFilterDisplayedUsedFilterNotDisplayed() {
+		
 		
 	}
 
