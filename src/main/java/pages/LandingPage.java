@@ -6,13 +6,15 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import com.aventstack.extentreports.ExtentTest;
+
 import base.BasePage;
 import utils.BrowserUtils;
 public class LandingPage extends BasePage {
 	
 	
-	public LandingPage(WebDriver driver) {
-		super(driver);
+	public LandingPage(WebDriver driver,ExtentTest logger) {
+		super(driver, logger);
 	}
 	
 	@FindBy(name="stockType")
@@ -39,11 +41,7 @@ public class LandingPage extends BasePage {
 	@FindBy(css="._1f8Iv ._17xN4")
 	public WebElement closeAd;
 	
-	@FindBy(xpath="//a[@title='login or signup']")
-	public WebElement signUpLink;
 	
-	@FindBy(xpath="//*[@id='header']//a[contains(text(),'Shop')] ")
-	public WebElement shopButton;
 	
 	
 	
@@ -68,7 +66,7 @@ public class LandingPage extends BasePage {
 		
 		
 		//return PageFactory.initElements(driver, SearchResultPage.class);
-		return new SearchResultPage(driver);
+		return new SearchResultPage(driver, logger);
 	}
 	
 	

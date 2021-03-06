@@ -1,16 +1,20 @@
 package pages;
 
+import java.util.List;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 
+import com.aventstack.extentreports.ExtentTest;
+
 import base.BasePage;
 
 public class SearchResultPage extends BasePage {
 	
-	public SearchResultPage(WebDriver driver) {
-		super(driver);
+	public SearchResultPage(WebDriver driver,ExtentTest logger) {
+		super(driver, logger);
 	}
 	
 	@FindBy(css=".header-primary__title-row .srp-header")
@@ -37,6 +41,15 @@ public class SearchResultPage extends BasePage {
 	@FindBy(xpath="//header[@class='filter-header']//label[contains(text(),'New')]")
 	public WebElement newFilter;
 	
+	@FindBy(xpath="//label[normalize-space()='Touring 8-Passenger']")
+	public WebElement touring8PassengerTrim;
+	
+	@FindBy(xpath="//header[@class='filter-header']//label[contains(text(),'Touring 8-Passenger')]")
+	public WebElement touring8PassengerTrimFilter;
+	
+	@FindBy(css="#srp-listing-rows-container .shop-srp-listings__listing-container")
+	public List<WebElement> listings;
+	
 	
 	
 	public void verifyFiltersDisplayed() {
@@ -52,6 +65,13 @@ public class SearchResultPage extends BasePage {
 		Assert.assertTrue(newFilter.isDisplayed());
 		Assert.assertFalse(usedFilter.isDisplayed());
 	}
+	
+	public void touring8PassengerTrimFilterIsDisplayed() {
+		
+		touring8PassengerTrim.click();
+		Assert.assertTrue(touring8PassengerTrimFilter.isDisplayed());
+	}
+	
 	
 
 }
