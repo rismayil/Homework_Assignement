@@ -14,23 +14,24 @@ public class VerifySearchResults extends BaseTest {
 	
 	LandingPage landingPage;
 	SearchResultPage searchResultsPage;
-	//BasePage basePage = new BasePage(driver);
+	
 	
 	@Test
 	public void verifyFiltersDisplayed() {
 		
-		BasePage basePage = new BasePage(driver);
+		
+		BasePage basePage = new BasePage(driver, logger);
 		basePage.invokeBrowser("chrome");
 		landingPage = basePage.OpenApplication();
 		searchResultsPage=landingPage.searchUsedCars();
-		//((SearchResultPage) searchResultsPage).verifySearchHeader("Used Honda Pilot for Sale");
+		
 		searchResultsPage.verifyFiltersDisplayed();
 		
 	}
 	
 	@Test
 	public void verifyNewFilterDisplayedUsedFilterNotDisplayed() {
-		
+		searchResultsPage.verifyNewFilterDisplayedUsedFilterNotDisplayed();
 		
 	}
 
